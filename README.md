@@ -1,23 +1,24 @@
 # Documentation
 
-This is a Restful API about football standings created using **NodeJS**. Data source <https://www.theguardian.com>.
+This is a Restful API about hoax news or articles created using **NodeJS**. Data source <https://turnbackhoax.id/>.
 
 ## Demo
 
-<http://footballstandings.siao.my.id/api/?league=query>
+<#>
+Comming Soon
 
 ## Installation
 
 ```
-git clone https://github.com/fikrifirmanf/Football-Standings-API.git
-cd Football-Standings-API
+git clone https://github.com/fikrifirmanf/Turnbackhoax.id-REST-API.git
+cd Turnbackhoax.id-REST-API
 npm install
 ```
 
 ### Running on Dev Mode
 
 ```
-npm run devStart
+npm run dev
 ```
 
 ### Status Code
@@ -44,6 +45,6 @@ Bundesliga : bundesliga
 
 ## Data Source
 
-<https://www.theguardian.com/football/tables>
+<https://turnbackhoax.id/>
 
 ### NOT FOR COMMERCIAL
