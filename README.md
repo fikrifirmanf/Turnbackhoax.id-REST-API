@@ -32,16 +32,11 @@ npm run dev
 
 ## REST API
 
-GET <http://localhost:3000/api/?league=query>
+GET <http://localhost:3000/all> --> Getting artikel update or all artikel
 
-#### Query
+GET <http://localhost:3000/all?page=1> --> Getting artikel with pagination
 
-```
-Premier League : pl
-La Liga : laliga
-Serie A : seriea
-Bundesliga : bundesliga
-```
+GET <http://localhost:3000/search?q=covid19&page=1> --> Getting artikel with query and pagination
 
 ## Data Source
 
