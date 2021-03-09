@@ -71,6 +71,7 @@ module.exports = {
                     jsonData[i].img = $e.find('figure.mh-loop-thumb > a > img').attr('src')
                     jsonData[i].title = $e.find('h3').text().trim()
                     jsonData[i].link = $e.find('h3 > a').attr('href')
+                    jsonData[i].slug = $e.find('h3 > a').attr('href').replace(/^.*\/\/[^\/]+/, '') 
                     jsonData[i].date = $e.find('div.mh-meta.mh-loop-meta > span.mh-meta-date.updated').text().trim()
                     jsonData[i].author = $e.find('div.mh-meta.mh-loop-meta > span.mh-meta-author.author.vcard > a').text().trim()
                 })
