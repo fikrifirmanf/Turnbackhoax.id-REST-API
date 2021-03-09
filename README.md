@@ -38,6 +38,8 @@ GET <http://localhost:3000/all?page=1> --> Getting artikel with pagination
 
 GET <http://localhost:3000/search?q=covid19&page=1> --> Getting artikel with query and pagination
 
+GET <http://localhost:3000/artikel?slug=/2021/03/09/salah-video-terebongkarrrr-korupsi-100-miliar-miras-dki-ternyata-anis-baswedan-gunakan-untuk-hal-ini/> --> Getting artikel content
+
 ## Data Source
 
 <https://turnbackhoax.id/>

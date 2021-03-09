@@ -16,13 +16,14 @@ module.exports = {
                 const text = await resp.text()
                 const $ = cheerio.load(text)
                 var jsonData = []
-
+               
                 $('article').each(function (i, e) {
                     jsonData.push({})
                     const $e = $(e)
                     jsonData[i].img = $e.find('figure.mh-loop-thumb > a > img').attr('src')
                     jsonData[i].title = $e.find('h3').text().trim()
                     jsonData[i].link = $e.find('h3 > a').attr('href')
+                    jsonData[i].slug = $e.find('h3 > a').attr('href').replace(/^.*\/\/[^\/]+/, '') 
                     jsonData[i].date = $e.find('div.mh-meta.mh-loop-meta > span.mh-meta-date.updated').text().trim()
                     jsonData[i].author = $e.find('div.mh-meta.mh-loop-meta > span.mh-meta-author.author.vcard > a').text().trim()
                 })
@@ -83,6 +84,46 @@ module.exports = {
                     'currentPage': currentPage,
                     'nextPage': nextPage,
                     'totalPage': totalPage,
+                    'data': jsonData
+                })
+                // console.log(jsonData)
+            }
+        } catch (error) {
+            res.status(500).json({
+                message: 'Internal Server Error'
+            })
+        }
+
+
+    },
+    contentArtikels: async (req, res) => {
+        
+        const url = `https://turnbackhoax.id/${req.query.slug}`
+        const resp = await fetch(url)
+        console.log(url)
+        try {
+            if (resp.status >= 400) {
+                return res.json({
+                    message: `Server Error ${resp.status}`
+                })
+            } else {
+                const text = await resp.text()
+                const $ = cheerio.load(text)
+                var jsonData = []
+
+                $('article').each(function (i, e) {
+                    jsonData.push({})
+                    const $e = $(e)
+                    
+                    jsonData[i].title = $e.find('h1.entry-title').text().trim()
+                    jsonData[i].date = $e.find('span.entry-meta-date.updated > a').text().trim()
+                    jsonData[i].author = $e.find('span.entry-meta-author.author.vcard > a.fn').text().trim()
+                    jsonData[i].category = $e.find('span.entry-meta-categories > a').text().trim()
+                    jsonData[i].content = $e.find('div.entry-content.mh-clearfix').html()  
+                })
+
+                res.json({
+                    'status': resp.status,
                     'data': jsonData
                 })
                 // console.log(jsonData)

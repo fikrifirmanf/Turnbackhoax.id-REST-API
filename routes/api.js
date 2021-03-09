@@ -7,5 +7,6 @@ res.send('<h3>Selamat datang di turnbackhoax.id API</h3>')
 })
 router.get('/all', scraperController.newArtikels)
 router.get('/search', scraperController.searchArtikels)
+router.get('/artikel', scraperController.contentArtikels)
 
 module.exports = router;
